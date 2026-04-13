@@ -141,7 +141,9 @@ async function setupPage(browser: Browser, options: ScreenshotOptions): Promise<
     height: deviceConfig.height,
   })
 
-  await page.setUserAgent(deviceConfig.userAgent)
+  await page.setExtraHTTPHeaders({
+    'User-Agent': deviceConfig.userAgent,
+  })
 
   // Set dark mode if requested
   if (options.dark_mode) {
