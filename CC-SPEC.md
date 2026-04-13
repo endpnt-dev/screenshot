@@ -1,4 +1,4 @@
-# endpnt Screenshot API — CC Spec (Part 1 of 5)
+# endpnt Screenshot API — CC Spec (Part 1 of 6)
 **Version:** 1.0
 **Date:** April 13, 2026
 **Author:** Opus (planning only — CC executes all code changes)
@@ -13,9 +13,9 @@
 Before doing ANYTHING, run these commands to ensure you're in the right place:
 
 ```bash
-cd /c/Repositories/endpnt/screenshot
+cd /mnt/c/Repositories/endpnt/screenshot
 pwd
-# Must show: /c/Repositories/endpnt/screenshot
+# Must show: /mnt/c/Repositories/endpnt/screenshot
 
 git branch
 # Must show: * dev
@@ -241,7 +241,7 @@ The pricing page at `/pricing` should include:
 
 ## DO NOT TOUCH
 
-- Do not modify any files outside the `/c/Repositories/endpnt/screenshot/` directory
+- Do not modify any files outside `/mnt/c/Repositories/endpnt/screenshot/`
 - Do not touch any other endpnt repos (web, preview, qr, convert, validate)
 - Do not delete the existing README.md — update it with API documentation instead
 
