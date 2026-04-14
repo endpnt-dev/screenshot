@@ -1,5 +1,5 @@
 import { chromium, Browser, Page } from 'playwright-core'
-import chromium_min from '@sparticuz/chromium-min'
+import chromium_min from '@sparticuz/chromium'
 import {
   DEVICE_PRESETS,
   SCREENSHOT_DEFAULTS,
@@ -110,7 +110,7 @@ async function getBrowser(): Promise<Browser> {
   const isProduction = process.env.NODE_ENV === 'production'
 
   if (isProduction) {
-    // Use chromium-min for Vercel
+    // Use chromium for Vercel
     return await chromium.launch({
       executablePath: await chromium_min.executablePath(),
       args: chromium_min.args,
