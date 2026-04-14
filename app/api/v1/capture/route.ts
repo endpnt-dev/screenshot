@@ -204,6 +204,22 @@ async function handleScreenshotRequest(request: NextRequest): Promise<Response> 
           { request_id: requestId, processing_ms: processingTime }
         )
       }
+
+      // Check for Chromium launch failures (common during rapid requests/cold starts)
+      if (
+        message.includes('Failed to launch') ||
+        message.includes('browser') ||
+        message.includes('executable') ||
+        message.includes('spawn') ||
+        message.includes('ENOENT')
+      ) {
+        return errorResponse(
+          ERROR_CODES.INTERNAL_ERROR,
+          'Server temporarily overloaded. Please retry in a moment.',
+          503,
+          { request_id: requestId, processing_ms: processingTime }
+        )
+      }
     }
 
     return errorResponse(

@@ -55,7 +55,7 @@ export const VALIDATION_LIMITS = {
   quality: { min: 1, max: 100 },
 }
 
-export const SUPPORTED_FORMATS = ['png', 'jpeg', 'webp', 'pdf'] as const
+export const SUPPORTED_FORMATS = ['png', 'jpeg', 'pdf'] as const
 
 export const ERROR_CODES = {
   AUTH_REQUIRED: 'AUTH_REQUIRED',

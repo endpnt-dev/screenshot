@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Screenshot API - Capture any webpage',
-  description: 'Fast, reliable screenshot API with device emulation, dark mode, and multiple formats. Capture any webpage as PNG, JPEG, WebP or PDF.',
+  description: 'Fast, reliable screenshot API with device emulation, dark mode, and multiple formats. Capture any webpage as PNG, JPEG, or PDF.',
   keywords: ['screenshot', 'api', 'webpage', 'capture', 'automation', 'browser'],
   authors: [{ name: 'endpnt.dev' }],
   openGraph: {

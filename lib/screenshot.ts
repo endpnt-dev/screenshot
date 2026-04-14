@@ -51,6 +51,13 @@ function validateUrl(url: string): string {
     if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
       throw new Error('URL must use http:// or https:// protocol')
     }
+
+    // Validate hostname - must contain at least one dot (e.g., example.com)
+    // This catches single-word strings like "notaurl" while allowing localhost for development
+    if (!parsedUrl.hostname.includes('.') && parsedUrl.hostname !== 'localhost') {
+      throw new Error('Invalid URL format')
+    }
+
     return finalUrl
   } catch {
     throw new Error('Invalid URL format')
@@ -171,7 +178,7 @@ async function captureScreenshot(
     fullPage: options.full_page ?? SCREENSHOT_DEFAULTS.full_page,
   }
 
-  if (format === 'jpeg' || format === 'webp') {
+  if (format === 'jpeg') {
     screenshotOptions.quality = options.quality ?? SCREENSHOT_DEFAULTS.quality
   }
 

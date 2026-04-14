@@ -11,7 +11,7 @@ const tiers = [
     requests_per_minute: 10,
     requests_per_month: 100,
     features: [
-      'All image formats (PNG, JPEG, WebP, PDF)',
+      'All image formats (PNG, JPEG, PDF)',
       'Basic viewport sizes',
       'Standard processing speed',
       'Community support'

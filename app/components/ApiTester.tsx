@@ -37,7 +37,7 @@ export default function ApiTester() {
     device: 'desktop'
   })
 
-  const [apiKey, setApiKey] = useState('ek_live_demo123')
+  const [apiKey, setApiKey] = useState('ek_live_74qlNSbK5jTwq28Y')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<ApiResponse | null>(null)
 
@@ -103,7 +103,7 @@ export default function ApiTester() {
               type="text"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
-              placeholder="ek_live_demo123"
+              placeholder="ek_live_74qlNSbK5jTwq28Y"
               className="w-full px-3 py-2 bg-background border border-border rounded-md focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none font-mono text-sm"
             />
           </div>
@@ -132,7 +132,6 @@ export default function ApiTester() {
               >
                 <option value="png">PNG</option>
                 <option value="jpeg">JPEG</option>
-                <option value="webp">WebP</option>
                 <option value="pdf">PDF</option>
               </select>
             </div>
@@ -192,7 +191,7 @@ export default function ApiTester() {
 
             {/* Quality */}
             <div>
-              <label className="block text-sm font-medium mb-1">Quality (JPEG/WebP)</label>
+              <label className="block text-sm font-medium mb-1">Quality (JPEG)</label>
               <input
                 type="number"
                 value={params.quality}

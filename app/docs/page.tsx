@@ -16,7 +16,7 @@ const parameters = [
     type: 'string',
     required: false,
     default: 'png',
-    description: 'Output format: "png", "jpeg", "webp", "pdf"'
+    description: 'Output format: "png", "jpeg", "pdf"'
   },
   {
     name: 'width',
@@ -58,7 +58,7 @@ const parameters = [
     type: 'number',
     required: false,
     default: '80',
-    description: 'JPEG/WebP quality (1-100)'
+    description: 'JPEG quality (1-100)'
   },
   {
     name: 'dark_mode',
@@ -284,7 +284,7 @@ export default function DocsPage() {
                   <div>
                     <p className="font-medium text-sm">Demo API Key</p>
                     <p className="text-sm text-muted-foreground">
-                      Use <code className="bg-background px-1.5 py-0.5 rounded font-mono">ek_live_demo123</code> for testing.
+                      Use <code className="bg-background px-1.5 py-0.5 rounded font-mono">ek_live_74qlNSbK5jTwq28Y</code> for testing.
                       This key has free tier limits (10 requests/minute, 100/month).
                     </p>
                   </div>

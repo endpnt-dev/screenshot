@@ -27,7 +27,7 @@ const features = [
   {
     icon: Image,
     title: 'Multiple formats',
-    description: 'PNG, JPEG, WebP, and PDF output with quality control'
+    description: 'PNG, JPEG, and PDF output with quality control'
   },
   {
     icon: Zap,

@@ -23,7 +23,7 @@ const features = [
     starter: true,
     pro: true,
     enterprise: true,
-    note: 'PNG, JPEG, WebP, PDF'
+    note: 'PNG, JPEG, PDF'
   },
   {
     name: 'Custom viewport sizes',
@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     question: 'What image formats are supported?',
-    answer: 'We support PNG, JPEG, WebP, and PDF formats. PNG is the default and offers the best quality for most use cases.'
+    answer: 'We support PNG, JPEG, and PDF formats. PNG is the default and offers the best quality for most use cases.'
   },
   {
     question: 'Can I capture full pages or just the viewport?',
