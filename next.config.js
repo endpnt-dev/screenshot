@@ -2,12 +2,15 @@
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: [
-      '@sparticuz/chromium-min',
+      '@sparticuz/chromium',
       'playwright-core'
     ]
   },
   images: {
     domains: []
+  },
+  outputFileTracingIncludes: {
+    '/api/v1/capture': ['./node_modules/@sparticuz/chromium/bin/**'],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -15,7 +18,7 @@ const nextConfig = {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         'playwright-core': false,
-        '@sparticuz/chromium-min': false,
+        '@sparticuz/chromium': false,
         fs: false,
         path: false,
       }
