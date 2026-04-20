@@ -36,7 +36,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:free',
+        prefix: 'rl:screenshot:free',
       }),
       starter: new Ratelimit({
         redis: redisInstance,
@@ -45,7 +45,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:starter',
+        prefix: 'rl:screenshot:starter',
       }),
       pro: new Ratelimit({
         redis: redisInstance,
@@ -54,7 +54,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:pro',
+        prefix: 'rl:screenshot:pro',
       }),
       enterprise: new Ratelimit({
         redis: redisInstance,
@@ -63,7 +63,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:enterprise',
+        prefix: 'rl:screenshot:enterprise',
       }),
     }
   }
