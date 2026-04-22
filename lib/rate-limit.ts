@@ -1,9 +1,10 @@
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
-import { TIER_LIMITS, ApiTier } from './config'
+import { TIER_LIMITS, DEMO_RATE_LIMIT, ApiTier } from './config'
 
 let redis: Redis | null = null
 let rateLimiters: Record<ApiTier, Ratelimit> | null = null
+let demoRateLimiter: Ratelimit | null = null
 
 function initializeRedis() {
   if (!redis) {
@@ -111,6 +112,59 @@ export async function checkRateLimit(
       remaining: TIER_LIMITS[tier].requests_per_minute,
       reset: Date.now() + 60000,
       limit: TIER_LIMITS[tier].requests_per_minute,
+    }
+  }
+}
+
+function initializeDemoRateLimiter() {
+  if (!demoRateLimiter) {
+    const redisInstance = initializeRedis()
+    if (!redisInstance) return null
+
+    demoRateLimiter = new Ratelimit({
+      redis: redisInstance,
+      limiter: Ratelimit.slidingWindow(
+        DEMO_RATE_LIMIT.requests_per_window,
+        `${DEMO_RATE_LIMIT.window_minutes} m`
+      ),
+      analytics: true,
+      prefix: 'rl:screenshot:demo',
+    })
+  }
+  return demoRateLimiter
+}
+
+export async function checkDemoRateLimit(
+  identifier: string
+): Promise<RateLimitResult> {
+  const limiter = initializeDemoRateLimiter()
+
+  if (!limiter) {
+    console.warn('Demo rate limiting disabled: Redis not available')
+    return {
+      allowed: true,
+      remaining: DEMO_RATE_LIMIT.requests_per_window,
+      reset: Date.now() + DEMO_RATE_LIMIT.window_minutes * 60000,
+      limit: DEMO_RATE_LIMIT.requests_per_window,
+    }
+  }
+
+  try {
+    const result = await limiter.limit(identifier)
+
+    return {
+      allowed: result.success,
+      remaining: result.remaining,
+      reset: result.reset,
+      limit: result.limit,
+    }
+  } catch (error) {
+    console.error('Demo rate limit check failed:', error)
+    return {
+      allowed: true,
+      remaining: DEMO_RATE_LIMIT.requests_per_window,
+      reset: Date.now() + DEMO_RATE_LIMIT.window_minutes * 60000,
+      limit: DEMO_RATE_LIMIT.requests_per_window,
     }
   }
 }

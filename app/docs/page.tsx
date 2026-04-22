@@ -121,7 +121,7 @@ const errorCodes = [
 
 const codeExamples = {
   curl: `curl -X POST https://screenshot.endpnt.dev/api/v1/capture \\
-  -H "x-api-key: ek_live_demo123" \\
+  -H "x-api-key: YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "url": "https://example.com",
@@ -284,8 +284,8 @@ export default function DocsPage() {
                   <div>
                     <p className="font-medium text-sm">Demo API Key</p>
                     <p className="text-sm text-muted-foreground">
-                      Use <code className="bg-background px-1.5 py-0.5 rounded font-mono">ek_live_74qlNSbK5jTwq28Y</code> for testing.
-                      This key has free tier limits (10 requests/minute, 100/month).
+                      Replace YOUR_API_KEY with your actual API key from the dashboard.
+                      The free tier includes 10 requests/minute and 100 requests/month.
                     </p>
                   </div>
                 </div>

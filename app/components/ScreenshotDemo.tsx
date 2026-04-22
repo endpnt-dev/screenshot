@@ -37,11 +37,10 @@ export default function ScreenshotDemo() {
     setResult(null)
 
     try {
-      const response = await fetch('/api/v1/capture', {
+      const response = await fetch('/api/demo/capture', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'ek_live_74qlNSbK5jTwq28Y'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           url: url.trim(),

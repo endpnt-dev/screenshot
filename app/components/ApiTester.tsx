@@ -37,7 +37,7 @@ export default function ApiTester() {
     device: 'desktop'
   })
 
-  const [apiKey, setApiKey] = useState('ek_live_74qlNSbK5jTwq28Y')
+  const [apiKey, setApiKey] = useState('')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<ApiResponse | null>(null)
 
@@ -103,7 +103,7 @@ export default function ApiTester() {
               type="text"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
-              placeholder="ek_live_74qlNSbK5jTwq28Y"
+              placeholder="YOUR_API_KEY"
               className="w-full px-3 py-2 bg-background border border-border rounded-md focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none font-mono text-sm"
             />
           </div>
