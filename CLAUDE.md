@@ -88,13 +88,9 @@ Do not remove or modify this key without a plan for how Chromium ships to runtim
 
 ---
 
-## Rate-Limit Namespace — FIX IN PROGRESS
+## Rate-Limit Namespace
 
-Screenshot's rate-limit namespace is `rl:{tier}` (plain, no API prefix) — this diverges from peer APIs which use `rl:{api}:{tier}`. Tracked for fix in `CC-SPEC-RATELIMIT-FIX.md`.
-
-After the fix lands: `rl:screenshot:{tier}` (matching QR, Preview, Convert).
-
-Until then: in-flight counters are namespaced inconsistently but not currently colliding. No paying users means counter reset is harmless.
+Screenshot uses `endpnt:ratelimit:screenshot:{tier}` as the Upstash key prefix for main auth, and `endpnt:demo:screenshot:ratelimit` for demo. These match the platform standard (standardized in Phase 8 of CC-SPEC-DEMO-PROXY-STANDARDIZATION.md). Do NOT change.
 
 ---
 
