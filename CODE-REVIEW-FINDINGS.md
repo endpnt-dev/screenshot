@@ -1,3 +1,5 @@
+> **⚠️ Security note (2026-04-24):** This file previously contained a live API key literal (C-008). The key has been revoked and is no longer active. Curl examples use `YOUR_API_KEY` — substitute a key retrieved from Vercel env.
+
 # Screenshot API — Code Review Findings (endpnt-dev/screenshot)
 **Reviewed by:** Opus (Claude chat) — cross-repo code review
 **Date:** April 17, 2026
@@ -23,9 +25,9 @@ Screenshot uses bare `rl:free` / `rl:starter` / `rl:pro` / `rl:enterprise` prefi
 ### M1 — Demo landing-page fetch uses hardcoded frontend key, same bug as QR
 **Files:** `app/components/ApiTester.tsx:40`, `app/components/ApiTester.tsx:106`, `app/components/ScreenshotDemo.tsx:44`, `app/docs/page.tsx:124`, `app/docs/page.tsx:287`
 
-Five hardcoded references to `ek_live_74qlNSbK5jTwq28Y` (current demo key) plus `ek_live_demo123` (stale placeholder). Pattern A, same issue as QR. One of the keys (`ek_live_demo123`) doesn't exist in `API_KEYS` — that's why the docs page tester returns INVALID_API_KEY.
+Five hardcoded references to `YOUR_API_KEY` (current demo key) plus `ek_live_demo123` (stale placeholder). Pattern A, same issue as QR. One of the keys (`ek_live_demo123`) doesn't exist in `API_KEYS` — that's why the docs page tester returns INVALID_API_KEY.
 
-**This is likely WHY the CIC audit found the Screenshot landing demo failing with 401.** The component is sending `ek_live_74qlNSbK5jTwq28Y` but the currently-deployed API_KEYS env var doesn't include that key anymore (it was rotated at some point).
+**This is likely WHY the CIC audit found the Screenshot landing demo failing with 401.** The component is sending `YOUR_API_KEY` but the currently-deployed API_KEYS env var doesn't include that key anymore (it was rotated at some point).
 
 **Recommended fix (short-term):** Update the hardcoded key in all 5 locations to a key that actually exists in the current `API_KEYS` env var. This unblocks the demo immediately but is still Pattern A.
 
